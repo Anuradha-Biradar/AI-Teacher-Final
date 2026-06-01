@@ -1,6 +1,20 @@
 # AI Teacher
 
-An AI-powered learning platform where users enter any topic and get a full course with interactive lessons and quizzes, generated on the fly by Google Gemini.
+An AI-powered learning platform where users can enter any topic and instantly generate a complete course with lessons, modules, and interactive quizzes using Google Gemini AI. The platform also includes user authentication, allowing users to securely register, log in, and manage their learning experience.
+
+# Features
+- AI-generated courses using Google Gemini AI
+- Dynamic syllabus generation
+- Interactive lessons and quizzes
+- Course management
+- User Authentication
+- User Registration
+- User Login
+- JWT-based Authentication
+- Protected Routes
+- Logout Functionality
+- Responsive User Interface
+- SQLite Database Integration
 
 ## Tech Stack
 
@@ -51,6 +65,7 @@ Then edit `server/.env` and add your API key:
 
 ```
 GOOGLE_GENERATIVE_AI_API_KEY=your_api_key_here
+JWT_SECRET=your_jwt_secret_here
 ```
 
 ## Running the App
@@ -61,7 +76,7 @@ GOOGLE_GENERATIVE_AI_API_KEY=your_api_key_here
 npm run dev
 ```
 
-This starts both the server (port 3001) and client (port 3000) concurrently.
+This starts both the server (port 3001) and client (port 3001) concurrently.
 
 ### Option B: Run separately
 
@@ -79,27 +94,42 @@ npm run dev
 
 ### Open the app
 
-Go to [http://localhost:3000](http://localhost:3000)
+Go to [http://localhost:3001](http://localhost:3001)
 
 ## Project Structure
 
 ```
 ai-teacher/
-├── client/                  # React frontend
-│   ├── components/          # UI components
-│   ├── services/api.ts      # Backend API calls
-│   ├── App.tsx              # Main app component
-│   ├── types.ts             # TypeScript types
-│   └── vite.config.ts       # Vite config with API proxy
-├── server/                  # Express backend
+├── client/
+│   ├── components/
+│   │   ├── AuthPage.tsx
+│   │   ├── Login.tsx
+│   │   ├── Register.tsx
+│   │   ├── Navbar.tsx
+│   │   └── Icons.tsx
+│   ├── store/
+│   │   └── auth.ts
+│   ├── services/
+│   │   └── api.ts
+│   ├── App.tsx
+│   └── types.ts
+│
+├── server/
 │   ├── src/
-│   │   ├── index.ts         # Express entry point
-│   │   ├── db.ts            # SQLite database layer
-│   │   └── routes/
-│   │       └── course.ts    # API routes + AI integration
-│   ├── .env.example         # Environment variable template
+│   │   ├── routes/
+│   │   │   ├── course.ts
+│   │   │   └── authentication.ts
+│   │   ├── middleware/
+│   │   │   └── authMiddleware.ts
+│   │   ├── utils/
+│   │   │   └── jwt.ts
+│   │   ├── db.ts
+│   │   └── index.ts
 │   └── package.json
-└── package.json             # Root scripts
+│
+├── README.md
+├── package.json
+└── package-lock.json
 ```
 
 ## API Endpoints

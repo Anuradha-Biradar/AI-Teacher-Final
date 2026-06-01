@@ -156,3 +156,5 @@ bun run src/index.ts
 ```
 
 The built frontend is served from `client/dist/`. Configure your server or CDN to serve those static files.
+
+

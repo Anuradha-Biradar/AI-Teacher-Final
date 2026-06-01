@@ -55,7 +55,8 @@ interface QuizProps {
 const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
     const [answers, setAnswers] = useState<number[]>(new Array(questions.length).fill(-1));
     const [submitted, setSubmitted] = useState(false);
-
+    const [score, setScore]=useState(0);
+    
     const handleOptionSelect = (qIndex: number, oIndex: number) => {
         if (submitted) return;
         const newAnswers = [...answers];
